@@ -4,6 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
+const API_URL = process.env.API_URL;
+
 const BlogPost = ({ post }) => (
   <div className="container">
     <Head>
@@ -58,7 +60,7 @@ const BlogPost = ({ post }) => (
 
 BlogPost.getInitialProps = async ({ req, query }) => {
   // TODO: aşağıdaki satırda bulunan adresi kendi sunucu adresinle değiştirmelisin
-  const res = await fetch(`http://localhost:3000/api/post/${query.postId}`);
+  const res = await fetch(`${API_URL}/post/${query.postId}`);
   const json = await res.json();
   return { post: json.post };
 };

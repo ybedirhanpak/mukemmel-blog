@@ -4,6 +4,8 @@ import Head from "next/head";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 
+const API_URL = process.env.API_URL;
+
 const Home = ({ posts }) => (
   <div className="container">
     <Head>
@@ -70,7 +72,8 @@ const Home = ({ posts }) => (
 
 Home.getInitialProps = async ({ req }) => {
   // TODO: aşağıdaki satırda bulunan adresi kendi sunucu adresinle değiştirmelisin
-  const res = await fetch("https://yahyapak.herokuapp.com/api/posts");
+  console.log("api url: ", API_URL);
+  const res = await fetch(`${API_URL}/posts`);
   const json = await res.json();
   return { posts: json.posts };
 };
