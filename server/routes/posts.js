@@ -6,6 +6,7 @@ const PostModel = require("../models/post");
  * Returns all posts
  */
 router.get("/posts", (req, res) => {
+    console.log("Request for getting all posts");
     PostModel.find({})
         .then(posts => {
             res.send(posts);
@@ -19,6 +20,7 @@ router.get("/posts", (req, res) => {
  * Returns a post with given postId
  */
 router.get("/posts/id/:postId", (req, res) => {
+    console.log("Request for getting post with post Id: ", req.params.postId);
     PostModel.findById(req.params.postId)
         .then(post => {
             res.status(200).send(post);
@@ -32,6 +34,7 @@ router.get("/posts/id/:postId", (req, res) => {
  * Returns a post with given post url ( slug )
  */
 router.get("/posts/slug/:postURL", (req, res) => {
+    console.log("Request for getting post with post slug: ", req.params.postURL);
     PostModel.findOne({ slug: req.params.postURL })
         .then(post => {
             res.status(200).send(post);
@@ -45,6 +48,7 @@ router.get("/posts/slug/:postURL", (req, res) => {
  * Creates a post
  */
 router.post("/posts", (req, res) => {
+    console.log("Request for creating post with post slug: ", req.body);
     let newPost = new PostModel({ ...req.body, date: new Date() });
     newPost.save()
         .then((post) => {
