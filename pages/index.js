@@ -22,7 +22,7 @@ const Home = ({ posts }) => {
       </div>
 
       {
-        posts.map(({slug, title, content, date},index) => (
+        posts && posts.length > 0 && posts.map(({slug, title, content, date},index) => (
           <Post
             key={index}
             slug={`posts/${slug}`}
@@ -37,9 +37,13 @@ const Home = ({ posts }) => {
 };
 
 Home.getInitialProps = async ({ req }) => {
+  let posts = []
   const response = await fetch(`${API_URL}/posts`);
-  const posts = await response.json();
-  console.log("posts from index ", posts);
+  try {
+
+  } catch {
+    posts = await response.json();
+  }
   return {
     posts: posts
   };
