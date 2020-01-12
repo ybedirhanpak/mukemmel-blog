@@ -4,7 +4,8 @@ import Link from "next/link";
 import BasePage from '../src/components/base-page';
 import Post from "../src/components/post";
 
-const API_URL = `${process.env.DOMAIN}:${process.env.PORT}/api`;
+const dev = process.env.NODE_ENV !== 'production';
+const API_URL = dev ? `${process.env.DOMAIN}:${process.env.PORT}/api` : `${process.env.DOMAIN}/api`;
 
 const Home = ({ posts }) => {
 

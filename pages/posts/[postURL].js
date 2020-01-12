@@ -3,7 +3,8 @@ import fetch from "isomorphic-unfetch";
 import BasePage from '../../src/components/base-page';
 import Post from '../../src/components/post';
 
-const API_URL = process.env.API_URL;
+const dev = process.env.NODE_ENV !== 'production';
+const API_URL = dev ? `${process.env.DOMAIN}:${process.env.PORT}/api` : `${process.env.DOMAIN}/api`;
 
 const PostDetails = ({ post: { slug, title, content, date } }) => {
 
