@@ -4,7 +4,7 @@ import Link from "next/link";
 import BasePage from '../src/components/base-page';
 import Post from "../src/components/post";
 
-const API_URL = process.env.API_URL;
+const API_URL = `${process.env.DOMAIN}:${process.env.PORT}/api`;
 
 const Home = ({ posts }) => {
 
@@ -38,11 +38,12 @@ const Home = ({ posts }) => {
 
 Home.getInitialProps = async ({ req }) => {
   let posts = []
+  console.log("API URL ", API_URL)
   const response = await fetch(`${API_URL}/posts`);
   try {
-
-  } catch {
     posts = await response.json();
+  } catch {
+    console.log("Error when fetching posts");
   }
   return {
     posts: posts
