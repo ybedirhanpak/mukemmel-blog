@@ -45,5 +45,10 @@ app
         server.listen(port, err => {
             if (err) throw err;
             console.log('App listening on port ', port);
+            console.log(process.env.DATABASE_URL);
+            console.log(process.env.NODE_ENV);
+            console.log(process.env.API_URL);
+            console.log(process.env.DOMAIN);
+
         })
     })
