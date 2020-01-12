@@ -17,9 +17,11 @@ const handle = app.getRequestHandler();
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
     .then(() => {
         console.log("Database connection established.");
+        console.log("DATABASE URL", process.env.DATABASE_URL);
     })
     .catch(() => {
         console.log("Database connection error.");
+        console.log("DATABASE URL", process.env.DATABASE_URL);
     })
 
 app
