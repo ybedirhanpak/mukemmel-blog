@@ -14,7 +14,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 //Connect mongodb database
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
+mongoose.createConnection(process.env.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
     .then(() => {
         console.log("Database connection established.");
         console.log("DATABASE URL", process.env.DATABASE_URL);
