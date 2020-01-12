@@ -2,6 +2,7 @@ const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+var cors = require("cors");
 
 //Get port
 const port = process.env.PORT || 3000;
@@ -14,12 +15,12 @@ const handle = app.getRequestHandler();
 
 //Connect mongodb database
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
-.then(() => {
-    console.log("Database connection established.");
-})
-.catch(() => {
-    console.log("Database connection error.");
-})
+    .then(() => {
+        console.log("Database connection established.");
+    })
+    .catch(() => {
+        console.log("Database connection error.");
+    })
 
 app
     .prepare()
@@ -29,6 +30,9 @@ app
         //Use middleware
         server.use(bodyParser.urlencoded({ extended: true }));
         server.use(bodyParser.json());
+
+        //Include CORS
+        server.use(cors({ origin: process.env.DOMAIN, credentials: true }))
 
         //Include post route
         const postRouter = require("./routes/posts.js");

@@ -16,40 +16,32 @@ const Home = ({ posts }) => {
       <div className="hero">
         <h1 className="hero-title">Hello World</h1>
         <div className="hero-social-links">
-          <Link href="https://www.google.com">
-            <a className="social-link">Google</a>
-          </Link>
-          <Link href="https://www.google.com">
-            <a className="social-link">Google</a>
-          </Link>
+            <a href="https://www.google.com" className="social-link">Google</a>
+            <a href="https://www.google.com" className="social-link">Google</a>
         </div>
       </div>
 
-      <style jsx>{`
-          .hero {
-            text-align: center;
-          }
-
-          .social-link {
-            margin: 0 10px;
-            padding: 5px;
-            text-decoration: none;
-          }
-      `}</style>
+      {
+        posts.map(({slug, title, content, date},index) => (
+          <Post
+            key={index}
+            slug={`posts/${slug}`}
+            title={title}
+            content={content}
+            date={date}            
+            />
+        ))  
+      }
     </BasePage>
   )
 };
 
 Home.getInitialProps = async ({ req }) => {
+  const response = await fetch(`${API_URL}/posts`);
+  const posts = await response.json();
+  console.log("posts from index ", posts);
   return {
-    posts: [
-      {
-        title: "Title",
-        slug: "slug",
-        content: "Content",
-        date: "Today"
-      }
-    ]
+    posts: posts
   };
 };
 

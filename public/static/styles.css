@@ -1,0 +1,25 @@
+/* Index page */
+.hero {
+    text-align: center;
+}
+
+.social-link {
+    margin: 0 10px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+/* Post */
+
+.post-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.post-content {
+    background: #dbe0e5;
+}
+.post-date {
+    font-size: 16px;
+    text-align: end;
+    color: #3e3e3e;
+}

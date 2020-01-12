@@ -15,21 +15,6 @@ const Post = ({ slug, title, content, date }) => (
             </div>
             <div className="post-date">{date}</div>
         </div>
-
-        <style jsx>{`
-            .post-container {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            .post-content {
-                background: #dbe0e5;
-            }
-            .post-date {
-                font-size: 16px;
-                text-align: end;
-                color: #3e3e3e;
-            }
-        `}</style>
     </React.Fragment>
 )
 

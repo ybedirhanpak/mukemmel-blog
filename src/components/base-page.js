@@ -8,7 +8,8 @@ const BasePage = ({ title, icon, children }) => {
                 <Head>
                     <title>{title}</title>
                     <link rel="icon" href={icon} />
-                    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"></link>
+                    <link type="text/css" href="/static/styles.css" rel="stylesheet"/>
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
                 </Head>
                 {children}
             </div>

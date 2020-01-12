@@ -18,8 +18,21 @@ router.get("/posts", (req, res) => {
 /**
  * Returns a post with given postId
  */
-router.get("/posts/:postId", (req, res) => {
+router.get("/posts/id/:postId", (req, res) => {
     PostModel.findById(req.params.postId)
+        .then(post => {
+            res.status(200).send(post);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err });
+        })
+})
+
+/**
+ * Returns a post with given post url ( slug )
+ */
+router.get("/posts/slug/:postURL", (req, res) => {
+    PostModel.findOne({ slug: req.params.postURL })
         .then(post => {
             res.status(200).send(post);
         })
