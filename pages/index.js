@@ -1,8 +1,8 @@
 import * as React from "react";
 import fetch from "isomorphic-unfetch";
 import Link from "next/link";
-import BasePage from '../components/base-page';
-import Post from "../components/post";
+import BasePage from '../src/components/base-page';
+import Post from "../src/components/post";
 
 const API_URL = process.env.API_URL;
 
@@ -25,18 +25,6 @@ const Home = ({ posts }) => {
         </div>
       </div>
 
-      {
-        posts.map((post, index) => (
-          <Post
-            key={index}
-            slug={post.slug}
-            title={post.title}
-            content={post.details}
-            date={post.date}
-          />
-        ))
-      }
-      
       <style jsx>{`
           .hero {
             text-align: center;
@@ -53,11 +41,16 @@ const Home = ({ posts }) => {
 };
 
 Home.getInitialProps = async ({ req }) => {
-  // TODO: aşağıdaki satırda bulunan adresi kendi sunucu adresinle değiştirmelisin
-  console.log("api url: ", API_URL);
-  const res = await fetch(`${API_URL}/posts`);
-  const json = await res.json();
-  return { posts: json.posts };
+  return {
+    posts: [
+      {
+        title: "Title",
+        slug: "slug",
+        content: "Content",
+        date: "Today"
+      }
+    ]
+  };
 };
 
 export default Home;

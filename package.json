@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon server/index.js",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "cross-env NODE_ENV=production node ./src/server/index.js"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.8.7",
     "next": "9.1.4",
