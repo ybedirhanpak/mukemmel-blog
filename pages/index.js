@@ -1,74 +1,56 @@
-import React from "react";
+import * as React from "react";
 import fetch from "isomorphic-unfetch";
-import Head from "next/head";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
+import BasePage from '../components/base-page';
+import Post from "../components/post";
 
 const API_URL = process.env.API_URL;
 
-const Home = ({ posts }) => (
-  <div className="container">
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const Home = ({ posts }) => {
 
-    <div className="hero">
-      <h1 className="hero-title">Hello World</h1>
-      <div className="hero-social-links">
-        <Link href="https://www.google.com">
-          <a className="social-link">Google</a>
-        </Link>
-      </div>
-    </div>
-
-    {posts.map(post => (
-      <div className="blog">
-        <h2 className="blog-title">
-          <Link href={post.slug}>
-            <a className="blog-title-link">{post.title}</a>
+  return (
+    <BasePage
+      title="Home"
+      icon="/favicon.ico"
+    >
+      <div className="hero">
+        <h1 className="hero-title">Hello World</h1>
+        <div className="hero-social-links">
+          <Link href="https://www.google.com">
+            <a className="social-link">Google</a>
           </Link>
-        </h2>
-        <div className="blog-text">
-          <ReactMarkdown source={post.details} />
+          <Link href="https://www.google.com">
+            <a className="social-link">Google</a>
+          </Link>
         </div>
-        <div className="blog-date">{post.date}</div>
       </div>
-    ))}
 
-    <style jsx>{`
-      .container {
-        max-width: 650px;
-        width: 100%;
-        margin: 0 auto;
+      {
+        posts.map((post, index) => (
+          <Post
+            key={index}
+            slug={post.slug}
+            title={post.title}
+            content={post.details}
+            date={post.date}
+          />
+        ))
       }
+      
+      <style jsx>{`
+          .hero {
+            text-align: center;
+          }
 
-      .hero {
-        text-align: center;
-        margin: 96px 0;
-      }
-
-      .social-link {
-        margin-right: 8px;
-      }
-
-      .hero-title {
-        font-size: 48px;
-      }
-
-      .blog-date {
-        text-align: right;
-        color: #cccccc;
-        margin: 12px 0 48px 0;
-      }
-
-      a {
-        color: #35459e;
-        text-decoration: none;
-      }
-    `}</style>
-  </div>
-);
+          .social-link {
+            margin: 0 10px;
+            padding: 5px;
+            text-decoration: none;
+          }
+      `}</style>
+    </BasePage>
+  )
+};
 
 Home.getInitialProps = async ({ req }) => {
   // TODO: aşağıdaki satırda bulunan adresi kendi sunucu adresinle değiştirmelisin

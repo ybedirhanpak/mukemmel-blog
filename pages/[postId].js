@@ -1,62 +1,31 @@
 import React from "react";
 import fetch from "isomorphic-unfetch";
-import Head from "next/head";
-import Link from "next/link";
-import ReactMarkdown from "react-markdown";
+import BasePage from '../components/base-page';
+import Post from '../components/post';
 
 const API_URL = process.env.API_URL;
 
-const BlogPost = ({ post }) => (
-  <div className="container">
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+const BlogPost = ({ post }) => {
 
-    <div className="blog">
-      <h2 className="blog-title">
-        <Link href="/test">
-          <a className="blog-title-link">{post.title}</a>
-        </Link>
-      </h2>
-      <div className="blog-text">
-        <ReactMarkdown source={post.details} />
-      </div>
-      <div className="blog-date">{post.date}</div>
-    </div>
-    <style jsx>{`
-      .container {
-        max-width: 650px;
-        width: 100%;
-        margin: 0 auto;
-      }
+  return (
+    <BasePage
+      title="Post"
+      icone="/favicon.ico"
+    >
 
-      .hero {
-        text-align: center;
-        margin: 96px 0;
-      }
+      <Post
+        slug={"/"}
+        title={post.title}
+        content={post.details}
+        date={post.date}
+      />
 
-      .social-link {
-        margin-right: 8px;
-      }
+      <style jsx>{`
 
-      .hero-title {
-        font-size: 48px;
-      }
-
-      .blog-date {
-        text-align: right;
-        color: #cccccc;
-        margin: 12px 0 48px 0;
-      }
-
-      a {
-        color: #35459e;
-        text-decoration: none;
-      }
     `}</style>
-  </div>
-);
+    </BasePage>
+  )
+};
 
 BlogPost.getInitialProps = async ({ req, query }) => {
   // TODO: aşağıdaki satırda bulunan adresi kendi sunucu adresinle değiştirmelisin
