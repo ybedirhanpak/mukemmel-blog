@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const PostModel = require("../models/post");
 
+const dateFormatter = require("../helpers/dateFormatter");
+
 /**
  * Returns all posts
  */
@@ -49,10 +51,10 @@ router.get("/posts/slug/:postURL", (req, res) => {
  */
 router.post("/posts", (req, res) => {
     console.log("Request for creating post with post slug: ", req.body);
-    let newPost = new PostModel({ ...req.body, date: new Date() });
+    const date = dateFormatter(new Date());
+    let newPost = new PostModel({ ...req.body, date: date });
     newPost.save()
         .then((post) => {
-            //Send data
             res.send(post);
         })
         .catch(err => {
