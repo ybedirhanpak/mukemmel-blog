@@ -1,8 +1,13 @@
 import * as React from "react";
 import fetch from "isomorphic-unfetch";
+
+//Components
+import BasePage from "../src/components/base-page";
 import Link from "next/link";
-import BasePage from '../src/components/base-page';
 import Post from "../src/components/post";
+
+//Configurations for app
+const config = require("../src/config");
 
 const Home = ({ posts }) => {
 
@@ -15,11 +20,13 @@ const Home = ({ posts }) => {
         <h1 className="hero-title">Hello World</h1>
         <div className="hero-social-links">
             <a href="https://www.google.com" className="social-link">Google</a>
-            <a href="https://www.google.com" className="social-link">Google</a>
+            <a href="https://www.twitter.com" className="social-link">Twitter</a>
+            <a href="https://www.facebook.com" className="social-link">Facebook</a>
         </div>
       </div>
 
-      {/* {
+      {
+        //If posts are fetched, render them.
         posts && posts.length > 0 && posts.map(({slug, title, content, date},index) => (
           <Post
             key={index}
@@ -29,23 +36,24 @@ const Home = ({ posts }) => {
             date={date}            
             />
         ))  
-      } */}
+      }
+
     </BasePage>
   )
 };
 
-// Home.getInitialProps = async ({ req }) => {
-//   let posts = []
-//   console.log("API URL ", API_URL)
-//   const response = await fetch(`${API_URL}/posts`);
-//   try {
-//     posts = await response.json();
-//   } catch {
-//     console.log("Error when fetching posts");
-//   }
-//   return {
-//     posts: posts
-//   };
-// };
+Home.getInitialProps = async ({ req }) => {
+  let posts = [];
+  console.log("Index page fetching all posts");
+  const response = await fetch(`${config.API_URL}/posts`);
+  try {
+    posts = await response.json();
+  } catch(e) {
+    console.log("Error when fetching posts ", e);
+  }
+  return {
+    posts
+  };
+};
 
 export default Home;

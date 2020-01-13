@@ -1,4 +1,4 @@
-let mongoose = require('mongoose');
+let mongoose = require("mongoose");
 
 let PostSchema = new mongoose.Schema({
     slug: String,

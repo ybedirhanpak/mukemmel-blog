@@ -1,10 +1,10 @@
 // Initialize doteenv library
 require("dotenv").config();
 const config = require("../src/config");
-const express = require('express');
-const next = require('next');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express = require("express");
+const next = require("next");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 const cors = require("cors");
 
 // This app object is used to redirect api calls into rendering next pages.
@@ -12,17 +12,13 @@ const app = next({ dev: config.IS_DEVELOPMENT });
 //TODO learn what this handle function does.
 const handle = app.getRequestHandler();
 
-console.log("HELLO WORLD; DATABASE URL: ", config.DATABASE_URL);
-
 //Connect mongodb database
 mongoose.connect(config.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
-    .then((response) => {
-        console.log("Database connection established. ", response);
-        console.log("DATABASE URL", config.DATABASE_URL);
+    .then(() => {
+        console.log("Database connection established. ");
     })
     .catch((error) => {
         console.log("Database connection error: ", error);
-        console.log("DATABASE URL", config.DATABASE_URL);
     })
 
 app
@@ -45,13 +41,9 @@ app
             return handle(req, res);
         })
 
+        //Start server
         server.listen(config.PORT, err => {
             if (err) throw err;
-            console.log('App listening on PORT ', config.PORT);
-            console.log(config.NODE_ENV);
-            console.log('is development: ',config.IS_DEVELOPMENT);
-            console.log(config.API_URL);
-            console.log(config.DOMAIN);
-            console.log(config.DATABASE_URL);
+            console.log(`### Server listening ### \n# DOMAIN: ${config.DOMAIN}\n# PORT: ${config.PORT}\n ###`);
         })
     })
