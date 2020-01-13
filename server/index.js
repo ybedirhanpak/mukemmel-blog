@@ -1,27 +1,28 @@
+// Initialize doteenv library
+require("dotenv").config();
+const config = require("../src/config");
 const express = require('express');
 const next = require('next');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var cors = require("cors");
+const cors = require("cors");
 
-//Get port
-const port = process.env.PORT || 3000;
-//Check if application is on production
-const dev = process.env.NODE_ENV !== 'production';
-//Create next app instance
-const app = next({ dev });
-
+// This app object is used to redirect api calls into rendering next pages.
+const app = next({ dev: config.IS_DEVELOPMENT });
+//TODO learn what this handle function does.
 const handle = app.getRequestHandler();
 
+console.log("HELLO WORLD; DATABASE URL: ", config.DATABASE_URL);
+
 //Connect mongodb database
-mongoose.createConnection(process.env.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
+mongoose.connect(config.DATABASE_URL, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true })
     .then((response) => {
-        console.log("Database connection established: ", response);
-        console.log("DATABASE URL", process.env.DATABASE_URL);
+        console.log("Database connection established. ", response);
+        console.log("DATABASE URL", config.DATABASE_URL);
     })
     .catch((error) => {
         console.log("Database connection error: ", error);
-        console.log("DATABASE URL", process.env.DATABASE_URL);
+        console.log("DATABASE URL", config.DATABASE_URL);
     })
 
 app
@@ -34,7 +35,7 @@ app
         server.use(bodyParser.json());
 
         //Include CORS
-        server.use(cors({ origin: process.env.DOMAIN, credentials: true }))
+        server.use(cors({ origin: config.DOMAIN, credentials: true }))
 
         //Include post route
         const postRouter = require("./routes/posts.js");
@@ -44,12 +45,13 @@ app
             return handle(req, res);
         })
 
-        server.listen(port, err => {
+        server.listen(config.PORT, err => {
             if (err) throw err;
-            console.log('App listening on port ', port);
-            console.log(process.env.DATABASE_URL);
-            console.log(process.env.NODE_ENV);
-            console.log(process.env.DOMAIN);
-
+            console.log('App listening on PORT ', config.PORT);
+            console.log(config.NODE_ENV);
+            console.log('is development: ',config.IS_DEVELOPMENT);
+            console.log(config.API_URL);
+            console.log(config.DOMAIN);
+            console.log(config.DATABASE_URL);
         })
     })
