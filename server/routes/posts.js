@@ -50,7 +50,7 @@ router.get("/posts/slug/:postURL", (req, res) => {
  * Creates a post
  */
 router.post("/posts", (req, res) => {
-    console.log("Request for creating post with post slug: ", req.body);
+    console.log("Request for creating post with post: ", req.body);
     const date = dateFormatter(new Date());
     let newPost = new PostModel({ ...req.body, date: date });
     newPost.save()

@@ -33,7 +33,7 @@ PostDetails.getInitialProps = async ({ query: { postURL } }) => {
   try {
     //Convert it to json if response is valid.
     post = await response.json();
-  } catch {
+  } catch { 
     console.log(`Post with ${postURL} not found`);
   }
   return { 

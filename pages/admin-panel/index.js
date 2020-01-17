@@ -2,18 +2,18 @@ import React from "react";
 
 //Components
 import BasePage from "../../src/components/base-page";
-import MDEditor from "../../src/components/md-editor";
+import MDEditor from "../../src/components/create-post";
 
-const CreatePost = ({props}) => {
+const AdminPanel = ({ props }) => {
 
     return (
         <BasePage
-            title="Create Post"
+            title="Admin Panel"
             icon="/favicon.ico"
         >
-            <MDEditor/>
+            <MDEditor />
         </BasePage>
     )
-} 
+}
 
-export default CreatePost;
+export default AdminPanel;
