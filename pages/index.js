@@ -16,26 +16,18 @@ const Home = ({ posts }) => {
       title="Home"
       icon="/favicon.ico"
     >
-      <div className="hero">
-        <h1 className="hero-title">Hello World</h1>
-        <div className="hero-social-links">
-            <a href="https://www.google.com" className="social-link">Google</a>
-            <a href="https://www.twitter.com" className="social-link">Twitter</a>
-            <a href="https://www.facebook.com" className="social-link">Facebook</a>
-        </div>
-      </div>
-
       {
         //If posts are fetched, render them.
-        posts && posts.length > 0 && posts.map(({slug, title, content, date},index) => (
-          <Post
-            key={index}
-            slug={`posts/${slug}`}
-            title={title}
-            content={content}
-            date={date}            
+        posts && posts.length > 0 && posts.map(({ slug, title, content, date }, index) => (
+            <Post
+              section
+              key={index}
+              slug={`posts/${slug}`}
+              title={title}
+              content={content}
+              date={date}
             />
-        ))  
+        ))
       }
 
     </BasePage>
@@ -48,7 +40,7 @@ Home.getInitialProps = async ({ req }) => {
   const response = await fetch(`${config.API_URL}/posts`);
   try {
     posts = await response.json();
-  } catch(e) {
+  } catch (e) {
     console.log("Error when fetching posts ", e);
   }
   return {

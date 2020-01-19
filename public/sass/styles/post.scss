@@ -1,0 +1,22 @@
+/* Post */
+.post-container {
+    max-width: 800px;
+    padding: 0 2rem;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    border-bottom: 1px rgb(200, 200, 200) solid;
+}
+
+.post-content.section {
+    max-height: 300px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+.post-date {
+    font-size: 16px;
+    text-align: end;
+    color: rgb(160, 160, 160);
+}   

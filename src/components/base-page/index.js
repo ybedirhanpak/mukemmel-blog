@@ -12,7 +12,7 @@ const BasePage = ({ title, icon, children }) => {
                     <title>{title}</title>
                     <link rel="icon" href={icon} />
                     <link type="text/css" href="/static/styles.css" rel="stylesheet" />
-                    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+                    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Alata|Poppins|Roboto+Slab&display=swap" rel="stylesheet" />
                 </Head>
                 <Navbar />
                 <div className="content-container">
