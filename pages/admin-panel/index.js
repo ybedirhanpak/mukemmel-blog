@@ -10,6 +10,7 @@ const AdminPanel = ({ props }) => {
         <BasePage
             title="Admin Panel"
             icon="/favicon.ico"
+            fill
         >
             <MDEditor />
         </BasePage>

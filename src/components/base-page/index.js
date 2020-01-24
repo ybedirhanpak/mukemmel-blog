@@ -4,7 +4,9 @@ import React from "react";
 import Head from "next/head";
 import Navbar from "../navbar";
 
-const BasePage = ({ title, icon, children }) => {
+const BasePage = ({ title, icon, children, fill }) => {
+    const contentClass = fill ? "content-container fill"
+        : "content-container";
     return (
         <React.Fragment>
             <div className="page-container">
@@ -12,10 +14,10 @@ const BasePage = ({ title, icon, children }) => {
                     <title>{title}</title>
                     <link rel="icon" href={icon} />
                     <link type="text/css" href="/static/styles.css" rel="stylesheet" />
-                    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Alata|Poppins|Roboto+Slab&display=swap" rel="stylesheet" />
+                    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Press+Start+2P|Open+Sans|Roboto+Slab&display=swap" rel="stylesheet" />
                 </Head>
                 <Navbar />
-                <div className="content-container">
+                <div className={contentClass}>
                     {children}
                 </div>
             </div>

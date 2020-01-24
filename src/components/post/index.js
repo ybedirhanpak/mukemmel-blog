@@ -8,11 +8,11 @@ const Post = ({ slug, title, content, date, section }) => {
     return (
         <React.Fragment>
             <div className="post-container">
-                <h2 className="post-title">
+                <h1 className="post-title">
                     <Link href={slug}>
                         <a className="post-title-link">{title}</a>
                     </Link>
-                </h2>
+                </h1>
                 <div className={contentClass}>
                     <ReactMarkdown source={content} />
                 </div>

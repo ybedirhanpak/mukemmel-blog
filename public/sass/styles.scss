@@ -1,16 +1,14 @@
-@import "./styles/navbar.scss",
-        "./styles/create-post.scss",
-        "./styles/post.scss";
-
-/** App **/
-$font-stack: "Roboto Slab","Poppins","Alata", "Open Sans", sans-serif;
-$primary-color: #333;
-$background-light: white;
+/* Variables */
+$font-stack: "Roboto Slab", "Open Sans", sans-serif;
+$color-light-theme: #333;
+$background-light-theme: white;
+$color-dark-theme: rgb(230, 230, 230);
+$background-dark-theme: rgb(34, 34, 34);
 
 body {
   font: 100% $font-stack;
-  color: $primary-color;
-  background-color: $background-light;
+  color: $color-light-theme;
+  background-color: $background-light-theme;
   line-height: 1.5em;
 }
 
@@ -22,7 +20,11 @@ input {
 a,
 a:visited {
     text-decoration: none;
-    color: $primary-color;
+    color: $color-light-theme;
+}
+
+.fill {
+    max-width: 100%!important;
 }
 
 /* Buttons */
@@ -60,5 +62,11 @@ a:visited {
 
 /* General pages */
 .content-container {
-    margin-top: 90px;
+    max-width: 800px;
+    margin: 90px auto;
 }
+
+@import "./styles/navbar.scss",
+        "./styles/create-post.scss",
+        "./styles/post.scss",
+        "./styles/blogger-card.scss";

@@ -14,7 +14,7 @@ class Navbar extends React.Component {
             }
 
             // While scolling down, hide the navbar
-            if(currentScrollPos > 100 && currentScrollPos > prevScrollPos) {
+            if (currentScrollPos > 200 && currentScrollPos > prevScrollPos) {
                 document.getElementById("app-navbar").classList.add("disabled");
             } else {
                 document.getElementById("app-navbar").classList.remove("disabled");

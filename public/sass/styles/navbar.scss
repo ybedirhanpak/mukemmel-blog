@@ -1,3 +1,9 @@
+$color-light-theme: #333;
+$color-hover-light-theme: rgb(14, 14, 14);
+$background-light-theme: white;
+$color-dark-theme: rgb(230, 230, 230);
+$background-dark-theme: rgb(34, 34, 34);
+$box-shadow-color:rgba(0, 0, 0, .2);
 
 /* Navbar */
 .navbar {
@@ -5,7 +11,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: white;
+    background: $background-light-theme;
     transition: 0.2s ease;
     z-index: 999;
     .navbar-container {
@@ -23,19 +29,20 @@
             margin: 0 1rem;
             padding: 1rem .5rem;
             text-decoration: none;
-            color: rgb(102, 101, 101);
+            color: $color-light-theme;
             transition: 0.2s ease;
         }
         .navbar-logo a:hover,
         .navbar-links a:hover {
-            color: rgb(34, 34, 34);
+            color: $color-hover-light-theme;
             transition: 0.2s ease;
         }
         .navbar-logo {
             display: flex;
             justify-content: flex-start;
+            font-family: "Permanent Marker", "Roboto Slab";
             a {
-                color: rgb(53, 52, 52);
+                color: $color-light-theme;
                 padding: 1rem 1rem;
             }
         }
@@ -49,7 +56,7 @@
 }
 
 .navbar.scrolled {
-    box-shadow: 1px 2px 15px rgba(0, 0, 0, .2);
+    box-shadow: 1px 2px 15px $box-shadow-color;
     transition: 0.2s ease;
     .navbar-container {
         height: 60px;
