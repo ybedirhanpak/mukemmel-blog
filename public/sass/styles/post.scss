@@ -24,28 +24,7 @@ $post-date-color: rgb(160, 160, 160);
     padding: 0 2rem;
     padding-bottom: 10px;
     border-bottom: 1px $border-bottom-color solid;
-}
-
-.post-container {
-    .post-image {
-        img {
-            box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-    }
-}
-
-.post-card {
     margin-bottom: 40px;
-    .post-content {
-        max-height: 300px;
-        overflow: hidden;
-        .post-image {
-            img {
-                width: 100%;
-            }
-        }
-    }
-
     .post-image {
         position: relative;
         height: 200px;
@@ -62,6 +41,26 @@ $post-date-color: rgb(160, 160, 160);
     }
 }
 
+.post-card {
+    .post-content {
+        max-height: 300px;
+        overflow: hidden;
+    }
+}
+
+.post-container {
+    .post-image {
+        height: 400px;
+    }
+}
+
+@media (max-width: 620px) {
+    .post-card {
+        .post-image {
+            height: 100px;
+        }
+    }
+}
 
 .post-date {
     font-size: 16px;

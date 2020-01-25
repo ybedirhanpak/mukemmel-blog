@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const PostModel = require("../models/post");
 const moment = require("moment");
-// const dateFormatter = require("../helpers/dateFormatter");
+const randomImageURL = require("../helpers/image-generator");
 
 /**
  * Returns all posts
@@ -51,11 +51,16 @@ router.get("/posts/slug/:postURL", (req, res) => {
  */
 router.post("/posts", (req, res) => {
     console.log("Request for creating post with post: ", req.body);
-    let newPost = new PostModel({ ...req.body, date: moment().format("D.M.Y HH:mm") });
-    newPost.save()
-        .then((post) => {
-            res.send(post);
-        })
+    const imageURL = req.body.imageURL ? req.body.imageURL : randomImageURL();
+    console.log("image url", imageURL);
+    new PostModel({
+        ...req.body,
+        imageURL: imageURL,
+        date: moment().format("D.M.Y HH:mm")
+    })
+        .save()
+        .then((post) => post.json())
+        .then((post) => res.send(post))
         .catch(err => {
             res.status(500).send({ message: err })
         })

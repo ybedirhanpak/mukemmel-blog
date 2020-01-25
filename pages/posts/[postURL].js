@@ -9,7 +9,7 @@ import { BloggerCard } from "../../src/components/blogger-card";
 //Configurations for app
 const config = require("../../src/config");
 
-const PostDetails = ({ post: { slug, title, content, date } }) => {
+const PostDetails = ({ post: { slug, title, content, date, imageURL } }) => {
 
   return (
     <BasePage
@@ -25,6 +25,7 @@ const PostDetails = ({ post: { slug, title, content, date } }) => {
           title={title}
           content={content}
           date={date}
+          imageURL={imageURL}
         />
       </div>
     </BasePage>

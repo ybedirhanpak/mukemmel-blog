@@ -19,17 +19,19 @@ class CreatePost extends React.Component {
         super(props);
         this.state = {
             title: "",
-            content: ""
+            content: "",
+            imgURL: ""
         }
         this.mdParser = new MarkdownIt(/* Markdown options*/).use(MarkdownEmoji);
     }
 
     publishPost = () => {
-        const { title, content } = this.state;
+        const { title, content, imageURL } = this.state;
         const postBody = {
             slug: this.createSlug(title),
             title,
             content,
+            imageURL
         };
         ApiPost("posts", postBody)
             // .then(response => response.json())
@@ -52,7 +54,18 @@ class CreatePost extends React.Component {
         return (
             <div className="create-post">
                 <div className="header-wrapper">
-                    <input className="form-input" type="text" onChange={() => this.setState({ title: event.target.value })} />
+                    <input
+                        className="form-input"
+                        type="text"
+                        onChange={() => this.setState({ title: event.target.value })}
+                        placeholder="Post Header"
+                    />
+                    <input
+                        className="form-input"
+                        type="text"
+                        onChange={() => this.setState({ imgURL: event.target.value })}
+                        placeholder="Image URL"
+                    />
                 </div>
                 <div className="md-editor-wrapper">
                     <MdEditor

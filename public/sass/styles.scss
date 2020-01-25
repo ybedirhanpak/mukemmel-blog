@@ -61,6 +61,11 @@ a:visited {
     border-radius: 2px;
 }
 
+.form-input::placeholder {
+    color: #a0a4aa;
+    font-size: 1rem;
+}
+
 /* General pages */
 .content-container {
     margin: 90px 0 0 0;

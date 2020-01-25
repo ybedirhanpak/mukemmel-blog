@@ -2,20 +2,16 @@ import React from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
-const Post = ({ slug, title, content, date, section }) => {
-    const containerClass = section ? "post-container section"
-        : "post-container";
+const Post = ({ slug, title, content, date, imageURL }) => {
     return (
         <React.Fragment>
-            <div className={containerClass}>
+            <div className={"post-container"}>
                 <div className="post-image">
-                    <img src="https://blog.emojipedia.org/content/images/size/w2000/2015/09/IMG_0001-1.jpg">
+                    <img src={imageURL}>
                     </img>
                 </div>
                 <h1 className="post-title">
-                    <Link>
-                        <a className="post-title-link">{title}</a>
-                    </Link>
+                    <span className="post-title-link">{title}</span>
                 </h1>
                 <div className="custom-html-style post-content">
                     <ReactMarkdown source={content} />

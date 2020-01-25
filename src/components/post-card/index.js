@@ -2,13 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
-const PostCard = ({ slug, title, content, date }) => {
+const PostCard = ({ slug, title, content, date, imageURL }) => {
     return (
         <React.Fragment>
             <div className="post-card">
                 <div className="post-image">
                     <a href={slug}>
-                        <img src="https://blog.emojipedia.org/content/images/size/w2000/2015/09/IMG_0001-1.jpg" />
+                        <img src={imageURL} />
                     </a>
                 </div>
                 <h1 className="post-title">

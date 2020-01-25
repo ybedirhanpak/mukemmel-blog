@@ -55,6 +55,11 @@ a:visited {
   border-radius: 2px;
 }
 
+.form-input::placeholder {
+  color: #a0a4aa;
+  font-size: 1rem;
+}
+
 /* General pages */
 .content-container {
   margin: 90px 0 0 0;
@@ -193,29 +198,15 @@ a:visited {
   padding: 0 2rem;
   padding-bottom: 10px;
   border-bottom: 1px #c8c8c8 solid;
-}
-
-.post-container .post-image img {
-  box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-.post-card {
   margin-bottom: 40px;
 }
-.post-card .post-content {
-  max-height: 300px;
-  overflow: hidden;
-}
-.post-card .post-content .post-image img {
-  width: 100%;
-}
-.post-card .post-image {
+.post-container .post-image, .post-card .post-image {
   position: relative;
   height: 200px;
   overflow: hidden;
   box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.2);
 }
-.post-card .post-image img {
+.post-container .post-image img, .post-card .post-image img {
   position: absolute;
   top: -9999px;
   left: -9999px;
@@ -224,6 +215,20 @@ a:visited {
   margin: auto;
 }
 
+.post-card .post-content {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.post-container .post-image {
+  height: 400px;
+}
+
+@media (max-width: 620px) {
+  .post-card .post-image {
+    height: 100px;
+  }
+}
 .post-date {
   font-size: 16px;
   text-align: end;
@@ -407,7 +412,7 @@ a:visited {
   }
 }
 .card-container {
-  background-color: #f5f5f5;
+  background-color: #fbf8f8;
 }
 
 /*# sourceMappingURL=styles.css.map */
