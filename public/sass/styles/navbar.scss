@@ -42,6 +42,7 @@ $box-shadow-color:rgba(0, 0, 0, .2);
             justify-content: flex-start;
             font-family: "Permanent Marker", "Roboto Slab";
             a {
+                font-size: 2rem;
                 color: $color-light-theme;
                 padding: 1rem 1rem;
             }
@@ -57,16 +58,16 @@ $box-shadow-color:rgba(0, 0, 0, .2);
 
 .navbar.scrolled {
     box-shadow: 1px 2px 15px $box-shadow-color;
-    transition: 0.2s ease;
+    transition: 0.3s ease;
     .navbar-container {
         height: 60px;
-        transition: 0.2s ease;
+        transition: 0.3s ease;
     }
 }
 
 .navbar.disabled {
     transform: translate(0px, -60px);
-    transition: 0.2s ease;
+    transition: 0.3s ease;
 }
 
 /* For small screens */
@@ -80,6 +81,21 @@ $box-shadow-color:rgba(0, 0, 0, .2);
                 font-size: 0.8rem;
                 margin: 0 0.3rem;
                 padding: 0.7rem .3rem;
+            }
+
+            .navbar-logo a {
+                font-size: 1.6rem;
+            }
+        }
+    } 
+}
+
+/* For small small screens */
+@media (max-width: 380px) {
+    .navbar{
+        .navbar-container {
+            .navbar-logo a {
+                font-size: 1.2rem;
             }
         }
     } 

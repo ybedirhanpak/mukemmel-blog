@@ -1,5 +1,7 @@
 import React from "react";
 import MarkdownIt from "markdown-it";
+import MarkdownEmoji from "markdown-it-emoji";
+
 import dynamic from "next/dynamic";
 
 const ApiPost = require("../../helpers/api-helper");
@@ -19,7 +21,7 @@ class CreatePost extends React.Component {
             title: "",
             content: ""
         }
-        this.mdParser = new MarkdownIt(/* Markdown options*/);
+        this.mdParser = new MarkdownIt(/* Markdown options*/).use(MarkdownEmoji);
     }
 
     publishPost = () => {
@@ -33,13 +35,14 @@ class CreatePost extends React.Component {
             // .then(response => response.json())
             .then(json => {
                 console.log("Post created successfully ", json);
+                alert("Post created");
             })
             .catch(err => {
                 console.log("Post couldn't created", err);
             })
     }
 
-    createSlug = (title="") => {
+    createSlug = (title = "") => {
         return title.replace(/[^a-zA-Z1-9 ]/g, "")  // Remove non-alphanumeric characters
             .replace(/\s+/g, "-")                   // Replace spaces with -
             .toLowerCase();                         // Convert to lower case

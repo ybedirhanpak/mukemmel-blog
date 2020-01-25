@@ -1,6 +1,54 @@
 .blogger-card {
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 1rem;
-    border-left: 2px rgb(0,0,0,.5) solid;
+    max-width: 800px;
+    margin: auto;
+    .blogger-image {
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+/* For small screens */
+@media (max-width: 620px) {
+    .blogger-card {
+        .blogger-image {
+            img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        .blogger-about {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+/* For small small screens */
+@media (max-width: 380px) {
+    .blogger-card {
+        .blogger-image {
+            img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        .blogger-about {
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.card-container {
+    background-color: #f5f5f5;
 }

@@ -2,18 +2,17 @@ import React from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
-const Post = ({ slug, title, content, date, section }) => {
-    const containerClass = section ? "post-container section"
-        : "post-container";
+const PostCard = ({ slug, title, content, date }) => {
     return (
         <React.Fragment>
-            <div className={containerClass}>
+            <div className="post-card">
                 <div className="post-image">
-                    <img src="https://blog.emojipedia.org/content/images/size/w2000/2015/09/IMG_0001-1.jpg">
-                    </img>
+                    <a href={slug}>
+                        <img src="https://blog.emojipedia.org/content/images/size/w2000/2015/09/IMG_0001-1.jpg" />
+                    </a>
                 </div>
                 <h1 className="post-title">
-                    <Link>
+                    <Link href={slug}>
                         <a className="post-title-link">{title}</a>
                     </Link>
                 </h1>
@@ -26,4 +25,4 @@ const Post = ({ slug, title, content, date, section }) => {
     )
 }
 
-export default Post;
+export default PostCard;

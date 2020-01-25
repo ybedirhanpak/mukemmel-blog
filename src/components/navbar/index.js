@@ -30,13 +30,13 @@ class Navbar extends React.Component {
                 <div className="navbar-container">
                     <div className="navbar-logo">
                         <a href="/" className="blogger-name">
-                            Yahya Pak
+                            YahyaPak
                         </a>
                     </div>
                     <div className="navbar-links">
                         <a href="/">About</a>
                         <a href="/">Contact</a>
-                        <a href="/">Github</a>
+                        <a href="/">Portfolio</a>
                     </div>
                 </div>
             </nav>
