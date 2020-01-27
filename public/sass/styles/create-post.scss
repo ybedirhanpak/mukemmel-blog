@@ -19,5 +19,26 @@
     .header-wrapper {
         display: flex;
         margin: 10px 0;
+        flex-direction: column;
+        .post-image {
+            font-size: 12px;
+        }
+
+        .h-block {
+            width: 300px;
+            margin: auto;
+            .post-minutes {
+                width: 30%;
+                font-size: 16px;
+            }
+    
+            .post-tag-wrapper {
+                width: 70%;
+                margin-left: 20px;
+                .post-tag-input {
+                    font-size: 16px;
+                }
+            }
+        } 
     }
 }

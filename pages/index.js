@@ -22,7 +22,7 @@ const Home = ({ posts }) => {
       <div className="post-list">
         {
           //If posts are fetched, render them.
-          posts && posts.length > 0 && posts.map(({ slug, title, content, date, imageURL }, index) => (
+          posts && posts.length > 0 && posts.map(({ slug, title, content, date, imageURL, minutes, tag }, index) => (
             <PostCard
               section
               key={index}
@@ -31,6 +31,8 @@ const Home = ({ posts }) => {
               content={content}
               date={date}
               imageURL={imageURL}
+              minutes={minutes}
+              tag={tag}
             />
           ))
         }

@@ -37,6 +37,9 @@ app
         const postRouter = require("./routes/posts.js");
         server.use("/api", postRouter);
 
+        const tagRouter = require("./routes/tags");
+        server.use("/api", tagRouter);
+
         server.all('*', (req, res) => {
             return handle(req, res);
         })

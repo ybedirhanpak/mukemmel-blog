@@ -59,7 +59,6 @@ router.post("/posts", (req, res) => {
         date: moment().format("D.M.Y HH:mm")
     })
         .save()
-        .then((post) => post.json())
         .then((post) => res.send(post))
         .catch(err => {
             res.status(500).send({ message: err })

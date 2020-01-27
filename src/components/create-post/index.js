@@ -20,27 +20,35 @@ class CreatePost extends React.Component {
         this.state = {
             title: "",
             content: "",
-            imgURL: ""
+            imageURL: "",
+            minutes: "1",
+            tag: ""
         }
         this.mdParser = new MarkdownIt(/* Markdown options*/).use(MarkdownEmoji);
     }
 
     publishPost = () => {
-        const { title, content, imageURL } = this.state;
+        const { title, content, imageURL, minutes, tag } = this.state;
         const postBody = {
             slug: this.createSlug(title),
             title,
             content,
-            imageURL
+            imageURL,
+            minutes,
+            tag
         };
         ApiPost("posts", postBody)
-            // .then(response => response.json())
-            .then(json => {
-                console.log("Post created successfully ", json);
-                alert("Post created");
+            .then(response => {
+                if (response.status >= 200 && response.status < 300) {
+                    console.log("Post created successfully ", response);
+                    alert("Post created", response);
+                } else {
+                    console.log("Post create failed", response);
+                    alert("Post create failed", response);
+                }
             })
             .catch(err => {
-                console.log("Post couldn't created", err);
+                console.log("Post create error: ", err);
             })
     }
 
@@ -61,11 +69,34 @@ class CreatePost extends React.Component {
                         placeholder="Post Header"
                     />
                     <input
-                        className="form-input"
+                        className="form-input post-image"
                         type="text"
-                        onChange={() => this.setState({ imgURL: event.target.value })}
+                        onChange={() => this.setState({ imageURL: event.target.value })}
                         placeholder="Image URL"
                     />
+                    <div className="h-block">
+                        <input
+                            className="form-input post-minutes"
+                            type="number"
+                            onChange={() => this.setState({ minutes: event.target.value })}
+                            placeholder="Minutes"
+                        />
+                        <div className="post-tag-wrapper">
+                            <input
+                                type="text"
+                                list="tags"
+                                className="form-input post-tag-input"
+                                placeholder="Tag"
+                                onChange={() => this.setState({ tag: event.target.value })}
+                            />
+                            <datalist id="tags">
+                                <option> Technology </option>
+                                <option> Lifestyle </option>
+                                <option> Programming </option>
+                                <option> University </option>
+                            </datalist>
+                        </div>
+                    </div>
                 </div>
                 <div className="md-editor-wrapper">
                     <MdEditor
